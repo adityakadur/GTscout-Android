@@ -6,6 +6,7 @@ import android.app.ListActivity;
 import android.app.ListFragment;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -13,9 +14,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -163,7 +168,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             if(position == 0) {
                 Fragment fragment = new MyListActivity();
                 return fragment;
-            } else {
+            }
+                  else if (position == 1){
+                  Fragment fragment = new HeroesFragment();
+                  return fragment;
+                  }
+            else {
 
 //                Fragment fragment = new DummySectionFragment();
 //                Bundle args = new Bundle();
@@ -291,5 +301,54 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             return rootView;
         }
     }
+    WebView heroespage;
+    public class HeroesFragment extends Fragment {
 
+        public HeroesFragment() {}
+
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState) {
+
+            View rootView = inflater.inflate(R.layout.listxml, container, false);
+            heroespage = (WebView) rootView.findViewById(R.id.webView1);
+            heroespage.setWebViewClient(new myWebClient());
+            heroespage.setVisibility(View.VISIBLE);
+            WebSettings webSettings = heroespage.getSettings();
+            webSettings.setJavaScriptEnabled(true);
+            //heroespage.loadUrl("http://67.205.56.162/");
+            heroespage.loadUrl("http://www.google.com");
+
+            return rootView;
+        }
+    }
+    public class myWebClient extends WebViewClient
+    {
+        @Override
+        public void onPageStarted(WebView view, String url, Bitmap favicon) {
+            // TODO Auto-generated method stub
+            super.onPageStarted(view, url, favicon);
+        }
+
+        @Override
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            // TODO Auto-generated method stub
+
+            view.loadUrl(url);
+            return true;
+
+        }
+    }
+    // To handle "Back" key press event for WebView to go back to previous screen.
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        if ((keyCode == KeyEvent.KEYCODE_BACK) && heroespage.canGoBack()) {
+            heroespage.goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
+    }
 }

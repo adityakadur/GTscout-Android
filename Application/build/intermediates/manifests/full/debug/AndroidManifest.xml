@@ -24,10 +24,13 @@
         android:targetSdkVersion="23" />
 
     <!--
-     While ViewPager will work on API 4 or above, tabs require an ActionBar. ActionBar is only
+         While ViewPager will work on API 4 or above, tabs require an ActionBar. ActionBar is only
          available in API 11 or above.
     -->
     <!-- Min/target SDK versions (<uses-sdk>) managed by build.gradle -->
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
