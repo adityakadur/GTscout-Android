@@ -4,15 +4,20 @@ import android.app.ActionBar;
 import android.app.FragmentTransaction;
 import android.app.ListActivity;
 import android.app.ListFragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -232,7 +237,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         }
     }
 
-    public static class MyListActivity extends Fragment{
+    public class MyListActivity extends Fragment{
         public MyListActivity(){
 
         }
@@ -243,11 +248,30 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             View rootView = inflater.inflate(R.layout.listxml, container, false);
             ListView myview = (ListView) rootView.findViewById(R.id.list_buzz);
 
-            String[] values = new String[] { "Turn Left at the fountain", "Keep left at the fork", "Turn right at Klaus 1447",
+            final String[] values = new String[] { "Turn Left at the fountain", "Keep left at the lobby", "Turn right at Klaus 1447",
                     "Your destination will be on the right" };
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),
                     android.R.layout.simple_list_item_1, values);
             myview.setAdapter(adapter);
+            myview.setOnItemClickListener(new OnItemClickListener()
+            {
+                @Override
+                public void onItemClick(AdapterView<?> adapter, View v, int position,
+                                        long arg3)
+                {
+                    String value = (String)adapter.getItemAtPosition(position);
+                    Context context = getApplicationContext();
+                    Toast.makeText(context, value, Toast.LENGTH_SHORT).show();
+                    // assuming string and if you want to get the value on click of list item
+                    // do what you intend to do on click of listview row
+                    Intent intent = new Intent(MainActivity.this, ImageDialog.class);
+                    Bundle extras = new Bundle();
+                    extras.putInt("ImageID",position);
+                    intent.putExtras(extras);
+
+                    startActivity(intent);
+                }
+            });
             return rootView;
         }
     }

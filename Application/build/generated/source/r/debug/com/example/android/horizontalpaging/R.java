@@ -270,9 +270,14 @@ containing a value of this type.
         public static final int vertical_page_margin=0x7f040001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int scenery=0x7f020001;
-        public static final int tile=0x7f020002;
+        public static final int atrium=0x7f020000;
+        public static final int fountain=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int lobby=0x7f020003;
+        public static final int pingu=0x7f020004;
+        public static final int scenery=0x7f020005;
+        public static final int soccer=0x7f020006;
+        public static final int tile=0x7f020007;
     }
     public static final class id {
         public static final int alignBounds=0x7f080002;
@@ -288,6 +293,11 @@ containing a value of this type.
         public static final int fill_horizontal=0x7f08000c;
         public static final int fill_vertical=0x7f08000d;
         public static final int horizontal=0x7f080000;
+        public static final int image0=0x7f080017;
+        public static final int image1=0x7f080018;
+        public static final int image2=0x7f080019;
+        public static final int image3=0x7f08001a;
+        public static final int image_dialog_root=0x7f080016;
         public static final int img_buzz=0x7f080014;
         public static final int left=0x7f08000e;
         public static final int list_buzz=0x7f080013;
@@ -302,6 +312,7 @@ containing a value of this type.
         public static final int fragment_main_dummy=0x7f030000;
         public static final int listxml=0x7f030001;
         public static final int sample_main=0x7f030002;
+        public static final int your_dialog_layout=0x7f030003;
     }
     public static final class string {
         public static final int action_settings=0x7f070000;
@@ -321,6 +332,7 @@ containing a value of this type.
         public static final int Widget=0x7f050007;
         public static final int Widget_SampleMessage=0x7f050000;
         public static final int Widget_SampleMessageTile=0x7f050008;
+        public static final int myDialogTheme=0x7f050009;
     }
     public static final class styleable {
         /** Attributes that can be used with a CardView.

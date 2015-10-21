@@ -85,4 +85,15 @@
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
     </style>
+    <!-- From: file:/media/urgu/Data/BuzzScouts/Scouts/Application/src/main/res/values/styles.xml -->
+    <eat-comment/>
+    <style name="myDialogTheme" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
 </resources>
